@@ -2,8 +2,26 @@
   --primary-clr: #282c34;
 }
 
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
 body {
   background-color: var(--primary-clr);
+}
+
+.timeline {
+  margin: 10rem 0;
+}
+
+.form {
+  display: flex;
+  padding: 1rem;
+  gap: 1rem;
+  flex-direction: column;
+  background-color: white;
+  width: min(40rem, 90%);
+  margin: 0 auto;
 }
 
 
