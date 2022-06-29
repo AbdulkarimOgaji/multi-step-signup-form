@@ -28,9 +28,11 @@ function App() {
       <div className="timeline"></div>
       <form className="form">
           {currentForm(stage)}
-       
-        <small><a href="https://google.com">Already have an account?</a></small>
-        <button type="submit" className="form--submit--btn"></button>
+        <small className="form--login"><a href="https://google.com">Already have an account?</a></small>
+        {
+          stage === FormStage.Password && <button type="submit" className="form--submit--btn"></button>
+        }
+        
       </form>
     </div>
   );
