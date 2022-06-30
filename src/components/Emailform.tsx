@@ -11,7 +11,7 @@ const EmailForm: React.FC<{ setStage: SetStage }> = ({ setStage }) => {
   const dispatch = useDispatch();
 
   const handleClick = () => {
-    if (!username.err && !email.err) {
+    if (!username.err && !email.err && username.val && email.val) {
       setStage(FormStage.Personal);
     }
   };
