@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins&family=Fontdiner+Swanky&display=swap');
 
 
 :root {
@@ -32,7 +32,7 @@ body {
 }
 
 .form {
-  transition: 750ms ease;
+  transition: 250ms;
   display: flex;
   padding: 1rem;
   flex-direction: column;
@@ -153,4 +153,26 @@ body {
   .form--step-btn-container {
     margin-top: 3rem;
   }
+}
+
+.special-font {
+  font-family: 'Fontdiner Swanky';
+}
+
+.welcome {
+  text-align: center;
+  color: white;
+  padding: 10rem 0;
+}
+
+.welcome p {
+  color: #777;
+  margin-bottom: 3rem;
+}
+
+.signup-btn {
+  text-decoration: none;
+  border-radius: 30px;
+  padding: 0.7rem 3rem;
+  color: white;
 }
