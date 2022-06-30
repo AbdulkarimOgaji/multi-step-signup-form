@@ -15,6 +15,10 @@ const EmailForm: React.FC<{ setStage: SetStage }> = ({ setStage }) => {
       setStage(FormStage.Personal);
     }
   };
+
+  const userNameborderColor = username.err ? "crimson" : "#282c34"
+  const emailborderColor = email.err ? "crimson" : "#282c34"
+
   return (
     <>
       <h2 className="form--header">Welcome</h2>
@@ -26,7 +30,7 @@ const EmailForm: React.FC<{ setStage: SetStage }> = ({ setStage }) => {
           type="text"
           className="form--input"
           placeholder="Username"
-          style={{ borderColor: "" }}
+          style={{ borderColor: userNameborderColor }}
           value={username.val}
           onChange={(e) => dispatch(setUsername(e.currentTarget.value))}
         />
@@ -38,6 +42,7 @@ const EmailForm: React.FC<{ setStage: SetStage }> = ({ setStage }) => {
           className="form--input"
           placeholder="Email"
           value={email.val}
+          style={{ borderColor: emailborderColor }}
           onChange={(e) => dispatch(setEmail(e.currentTarget.value))}
         />
       </div>

@@ -14,3 +14,9 @@ export const validatePhone = (phone: string) => {
   }
   return false;
 };
+
+export const validatePassword = (pwd: string): string => {
+  if (pwd.length < 6) return "password must be more than 6 characters"
+  if (pwd.toLowerCase() === pwd) return "password must contain at least one upper Case letter"
+  return ""
+}

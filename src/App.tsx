@@ -30,7 +30,7 @@ function App() {
           {currentForm(stage)}
         <small className="form--login"><a href="https://google.com">Already have an account?</a></small>
         {
-          stage === FormStage.Password && <button type="submit" className="form--submit--btn"></button>
+          stage === FormStage.Password && <button type="submit" className="form--step-btn form-btn-submit">Sign Up</button>
         }
         
       </form>

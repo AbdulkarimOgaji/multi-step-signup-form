@@ -15,6 +15,8 @@ const PersonalForm: React.FC<{ setStage: SetStage }> = ({ setStage }) => {
       setStage(FormStage.Password);
     }
   };
+  const phoneborderColor = phone.err ? "crimson" : "#282c34"
+  const addressborderColor = address.err ? "crimson" : "#282c34"
   return (
     <>
       <h2 className="form--header">Personal Details</h2>
@@ -26,7 +28,7 @@ const PersonalForm: React.FC<{ setStage: SetStage }> = ({ setStage }) => {
           type="text"
           className="form--input"
           placeholder="Address"
-          style={{ borderColor: "" }}
+          style={{ borderColor: addressborderColor }}
           value={address.val}
           onChange={(e) => dispatch(setAddress(e.currentTarget.value))}
         />
@@ -38,6 +40,7 @@ const PersonalForm: React.FC<{ setStage: SetStage }> = ({ setStage }) => {
           className="form--input"
           placeholder="Phone"
           value={phone.val}
+          style={{ borderColor: phoneborderColor }}
           onChange={(e) => dispatch(setPhone(e.currentTarget.value))}
         />
       </div>

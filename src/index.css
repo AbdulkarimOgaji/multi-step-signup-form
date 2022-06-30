@@ -117,6 +117,11 @@ body {
 }
 
 
+.form-btn-submit {
+  width: 10rem;
+  margin: 0 auto;
+}
+
 
 
 @media screen and (min-width: 800px) {

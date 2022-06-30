@@ -1,6 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit'
 import type { PayloadAction } from '@reduxjs/toolkit'
-import { validateEmail, validatePhone } from '../common/utils/validators';
+import { validateEmail, validatePassword, validatePhone } from '../common/utils/validators';
 
 
 
@@ -24,6 +24,11 @@ export interface LoginState {
     err: string;
   }
 
+  password: {
+    val: string;
+    err: string;
+  }
+
 }
 
 const initialState: LoginState = {
@@ -42,6 +47,10 @@ const initialState: LoginState = {
   address: {
     val: "",
     err: ""
+  },
+  password: {
+    val: "",
+    err: "",
   }
 }
 
@@ -65,12 +74,17 @@ export const loginSlice = createSlice({
         state.phone.val = action.payload
         state.phone.err = !validatePhone(action.payload) ? "phone must be a valid number": ""
     },
+
+    setPassword: (state, action: PayloadAction<string>) => {
+      state.password.val = action.payload
+      state.password.err = validatePassword(action.payload)
+    }
     
   },
 })
 
 // Action creators are generated for each case reducer function
-export const { setUsername, setEmail, setPhone, setAddress } = loginSlice.actions
+export const { setUsername, setEmail, setPhone, setAddress, setPassword } = loginSlice.actions
 
 export default loginSlice.reducer
 
