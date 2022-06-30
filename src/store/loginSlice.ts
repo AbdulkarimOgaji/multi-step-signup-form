@@ -29,6 +29,11 @@ export interface LoginState {
     err: string;
   }
 
+  passwordConf: {
+    val: string;
+    err: string;
+  }
+
 }
 
 const initialState: LoginState = {
@@ -51,6 +56,10 @@ const initialState: LoginState = {
   password: {
     val: "",
     err: "",
+  },
+  passwordConf: {
+    val: "",
+    err: "",
   }
 }
 
@@ -60,7 +69,7 @@ export const loginSlice = createSlice({
   reducers: {
     setUsername: (state, action: PayloadAction<string>) => {
       state.username.val = action.payload
-      state.username.err = action.payload.length < 6 ? "username must be at least 6 characters long": ""
+      state.username.err = action.payload.length < 2 ? "username must be at least 2 characters long": ""
     },
     setEmail: (state, action: PayloadAction<string>) => {
         state.email.val = action.payload
@@ -68,7 +77,7 @@ export const loginSlice = createSlice({
     },
     setAddress: (state, action: PayloadAction<string>) => {
       state.address.val = action.payload
-      state.address.err = action.payload.length < 1 ? "address is required": ""
+      state.address.err = action.payload.length < 1 ? "country is required": ""
     },
     setPhone: (state, action: PayloadAction<string>) => {
         state.phone.val = action.payload
@@ -78,13 +87,18 @@ export const loginSlice = createSlice({
     setPassword: (state, action: PayloadAction<string>) => {
       state.password.val = action.payload
       state.password.err = validatePassword(action.payload)
+    },
+
+    setPasswordConf: (state, action: PayloadAction<string>) => {
+      state.passwordConf.val = action.payload
+      state.passwordConf.err = state.password.val === action.payload ? "" : "passwords do not match"
     }
     
   },
 })
 
 // Action creators are generated for each case reducer function
-export const { setUsername, setEmail, setPhone, setAddress, setPassword } = loginSlice.actions
+export const { setUsername, setEmail, setPhone, setAddress, setPassword, setPasswordConf } = loginSlice.actions
 
 export default loginSlice.reducer
 

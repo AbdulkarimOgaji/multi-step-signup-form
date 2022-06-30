@@ -15,7 +15,20 @@ body {
 }
 
 .timeline {
-  margin: 10rem 0;
+  position: relative;
+  width: min(60rem, 90%);
+  height: 4px;
+  background-color: white;
+  margin: 5rem auto;
+}
+
+.progress {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  background-color: coral;
+  transition: 500ms;
 }
 
 .form {
@@ -53,7 +66,7 @@ body {
 .form--input {
   width: 100%;
   margin: 1.5rem 0;
-  padding-top: 2rem;
+  padding-top: 1rem;
   border: 0;
   font-size: 1rem;
   border-bottom: 3px solid;
@@ -78,7 +91,7 @@ body {
   display: flex;
   justify-content: flex-end;
   gap: 2rem;
-  margin-top: 3rem;
+  margin-top: 1rem;
 
 }
 
@@ -134,5 +147,9 @@ body {
 
   .form--input {
     font-size: 1.5rem;
+    padding-top: 2rem;
+  }
+  .form--step-btn-container {
+    margin-top: 3rem;
   }
 }

@@ -12,11 +12,16 @@ const PasswordForm: React.FC<{setStage: SetStage}> = ({ setStage }) => {
   );
   const dispatch = useDispatch();
 
+  const handleNextButton = () => {
+    if (password.val && !password.err) {
+      setStage(FormStage.PasswordConf)
+    }
+  }
 
   const borderColor = password.err ? "crimson" : "#282c34"
   return (
     <>
-      <h2 className="form--header">Confirm Password</h2>
+      <h2 className="form--header">Enter Password</h2>
       <p className="form--prompt">Enter Your Password</p>
       <div className="form-input-container">
         <p className="form-error-text">{password.err}</p>
@@ -38,6 +43,13 @@ const PasswordForm: React.FC<{setStage: SetStage}> = ({ setStage }) => {
           onClick={() => setStage(FormStage.Personal)}
         >
           Previous
+        </button>
+        <button
+          type="button"
+          className="form--step-btn"
+          onClick={handleNextButton}
+        >
+          Next
         </button>
       </div>
     </>

@@ -20,14 +20,14 @@ const PersonalForm: React.FC<{ setStage: SetStage }> = ({ setStage }) => {
   return (
     <>
       <h2 className="form--header">Personal Details</h2>
-      <p className="form--prompt">Enter Your phone number and address</p>
+      <p className="form--prompt">Enter Your phone number and country</p>
       <div className="form-input-container">
         <p className="form-error-text">{address.err}</p>
 
         <input
           type="text"
           className="form--input"
-          placeholder="Address"
+          placeholder="Country"
           style={{ borderColor: addressborderColor }}
           value={address.val}
           onChange={(e) => dispatch(setAddress(e.currentTarget.value))}

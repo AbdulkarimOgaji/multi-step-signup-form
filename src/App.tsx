@@ -1,38 +1,67 @@
 import { useState } from "react";
+import { useSelector } from "react-redux";
 import { FormStage } from "./common/enums";
 import EmailForm from "./components/Emailform";
+import PasswordConf from "./components/PasswordConf";
 import PasswordForm from "./components/PasswordForm";
 import PersonalForm from "./components/PersonalForm";
-
-
-
+import { RootState } from "./store/store";
 
 function App() {
-  const [stage, setStage] = useState<FormStage>(FormStage.Email)
+  const [stage, setStage] = useState<FormStage>(FormStage.Email);
+
+  const { passwordConf } = useSelector(
+    (state: RootState) => state.loginDetails
+  );
 
   const currentForm = (stage: FormStage) => {
-    switch(stage) {
+    switch (stage) {
       case FormStage.Email:
-        return <EmailForm setStage={setStage} />
+        return <EmailForm setStage={setStage} />;
       case FormStage.Personal:
-        return <PersonalForm setStage={setStage} />
+        return <PersonalForm setStage={setStage} />;
       case FormStage.Password:
-        return <PasswordForm setStage={setStage} />
+        return <PasswordForm setStage={setStage} />;
+      case FormStage.PasswordConf:
+        return <PasswordConf setStage={setStage} />;
       default:
-        return <></>
+        return <></>;
     }
-  }
+  };
+
+  const currentProgressWidth = (stage: FormStage) => {
+    switch (stage) {
+      case FormStage.Email:
+        return "0%";
+      case FormStage.Personal:
+        return "33%";
+      case FormStage.Password:
+        return "66%";
+      case FormStage.PasswordConf:
+        return "100%";
+      default:
+        return "0%";
+    }
+  };
 
   return (
     <div className="container">
-      <div className="timeline"></div>
+      <div className="timeline">
+        <div
+          className="progress"
+          style={{ width: currentProgressWidth(stage) }}
+        ></div>
+      </div>
       <form className="form">
-          {currentForm(stage)}
-        <small className="form--login"><a href="https://google.com">Already have an account?</a></small>
-        {
-          stage === FormStage.Password && <button type="submit" className="form--step-btn form-btn-submit">Sign Up</button>
-        }
-        
+        {currentForm(stage)}
+        <small className="form--login">
+          <a href="https://google.com">Already have an account?</a>
+        </small>
+        {stage === FormStage.PasswordConf && !passwordConf.err && (
+          <button type="submit" className="form--step-btn form-btn-submit">
+            Sign Up
+          </button>
+        )}
       </form>
     </div>
   );
